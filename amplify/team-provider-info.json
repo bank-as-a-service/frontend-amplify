@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bank-staging-05042-authRole",
+      "UnauthRoleArn": "arn:aws:iam::616106644946:role/amplify-bank-staging-05042-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::616106644946:role/amplify-bank-staging-05042-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-bank-staging-05042-deployment",
+      "UnauthRoleName": "amplify-bank-staging-05042-unauthRole",
+      "StackName": "amplify-bank-staging-05042",
+      "StackId": "arn:aws:cloudformation:us-east-1:616106644946:stack/amplify-bank-staging-05042/154da4a0-c139-11ed-b2c0-0af03e412367",
+      "AmplifyAppId": "d1nienjr4e445h"
+    }
+  }
+}
