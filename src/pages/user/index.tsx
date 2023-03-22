@@ -1,17 +1,39 @@
 import {
-    Authenticator,
-} from "@aws-amplify/ui-react";
+    Button,
+    withAuthenticator,
+    WithAuthenticatorProps,
+} from '@aws-amplify/ui-react';
 
-export default function Home() {
+import AccountCreateForm from '@/ui-components/AccountCreateForm';
+import Link from "next/link";
+
+interface Props extends WithAuthenticatorProps {
+    isPassedToWithAuthenticator: boolean;
+}
+
+function Home({ isPassedToWithAuthenticator, signOut, user }: Props) {
+    if (!isPassedToWithAuthenticator) {
+        throw new Error(`isPassedToWithAuthenticator was not provided`);
+    }
+
     return (
-        <Authenticator>
-            {({ signOut, user }) => (
-                <main>
-                    <h1>Hello {user.username}</h1>
-                    <button onClick={signOut}>Sign out</button>
-                </main>
-            )}
-        </Authenticator>
-    )
+        <>
+            <Button variation="primary" onClick={signOut}>Logout {user?.attributes?.email}</Button>
+            <AccountCreateForm />
+            <Link href="/">
+                <Button>Home</Button>
+            </Link>
+        </>
+    );
+}
+
+export default withAuthenticator(Home);
+
+export async function getStaticProps() {
+    return {
+        props: {
+            isPassedToWithAuthenticator: true,
+        },
+    };
 }
 
