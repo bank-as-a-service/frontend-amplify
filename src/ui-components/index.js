@@ -33,3 +33,7 @@ export { default as ProductDetail } from "./ProductDetail";
 export { default as HeroLayout1 } from "./HeroLayout1";
 export { default as HeroLayout3 } from "./HeroLayout3";
 export { default as studioTheme } from "./studioTheme";
+export { default as AccountCreateForm } from "./AccountCreateForm";
+export { default as AccountUpdateForm } from "./AccountUpdateForm";
+export { default as FundTransferCreateForm } from "./FundTransferCreateForm";
+export { default as FundTransferUpdateForm } from "./FundTransferUpdateForm";
