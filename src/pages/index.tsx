@@ -1,27 +1,11 @@
 import Head from 'next/head'
+import Link from 'next/link';
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-
-import { Amplify } from "aws-amplify";
-import {
-  Authenticator,
-} from "@aws-amplify/ui-react";
-import '@aws-amplify/ui-react/styles.css';
-
-import aws_exports from "./../aws-exports";
-Amplify.configure(aws_exports);
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  return (
-      <Authenticator>
-      <Content/>
-      </Authenticator>
-  )
-}
-
-function Content() {
   return (
     <>
       <Head>
@@ -37,11 +21,7 @@ function Content() {
             <code className={styles.code}>src/pages/index.tsx</code>
           </p>
           <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+              <Link href="/user">
               By{' '}
               <img
                 src="/vercel.svg"
@@ -50,7 +30,7 @@ function Content() {
                 width={100}
                 height={24}
               />
-            </a>
+              </Link>
           </div>
         </div>
 
