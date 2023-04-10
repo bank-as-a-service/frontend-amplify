@@ -20,7 +20,7 @@ import { DataStore } from "aws-amplify";
 export default function FundTransferUpdateForm(props) {
   const {
     id: idProp,
-    fundTransfer,
+    fundTransfer: fundTransferModelProp,
     onSuccess,
     onError,
     onSubmit,
@@ -31,7 +31,7 @@ export default function FundTransferUpdateForm(props) {
   } = props;
   const initialValues = {
     createdOn: "",
-    status: undefined,
+    status: "",
     amount: "",
     sourceAccountId: "",
     destinationAccountId: "",
@@ -57,17 +57,18 @@ export default function FundTransferUpdateForm(props) {
     setDestinationAccountId(cleanValues.destinationAccountId);
     setErrors({});
   };
-  const [fundTransferRecord, setFundTransferRecord] =
-    React.useState(fundTransfer);
+  const [fundTransferRecord, setFundTransferRecord] = React.useState(
+    fundTransferModelProp
+  );
   React.useEffect(() => {
     const queryData = async () => {
       const record = idProp
         ? await DataStore.query(FundTransfer, idProp)
-        : fundTransfer;
+        : fundTransferModelProp;
       setFundTransferRecord(record);
     };
     queryData();
-  }, [idProp, fundTransfer]);
+  }, [idProp, fundTransferModelProp]);
   React.useEffect(resetStateValues, [fundTransferRecord]);
   const validations = {
     createdOn: [{ type: "Required" }],
@@ -345,7 +346,7 @@ export default function FundTransferUpdateForm(props) {
             event.preventDefault();
             resetStateValues();
           }}
-          isDisabled={!(idProp || fundTransfer)}
+          isDisabled={!(idProp || fundTransferModelProp)}
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
@@ -357,7 +358,7 @@ export default function FundTransferUpdateForm(props) {
             type="submit"
             variation="primary"
             isDisabled={
-              !(idProp || fundTransfer) ||
+              !(idProp || fundTransferModelProp) ||
               Object.values(errors).some((e) => e?.hasError)
             }
             {...getOverrideProps(overrides, "SubmitButton")}
