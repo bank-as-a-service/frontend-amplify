@@ -30,7 +30,7 @@ export default function FundTransferCreateForm(props) {
   } = props;
   const initialValues = {
     createdOn: "",
-    status: undefined,
+    status: "",
     amount: "",
     sourceAccountId: "",
     destinationAccountId: "",
