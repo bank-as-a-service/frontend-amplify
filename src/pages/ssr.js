@@ -7,6 +7,13 @@ export default function SSR({ formattedDate }) {
           <Head>
               <title>SSR Example</title>
           </Head>
+          <Script
+              src="https://connect.facebook.net/en_US/sdk.js"
+              strategy="lazyOnload"
+              onLoad={() =>
+                  console.log(`script loaded correctly, window.FB has been populated`)
+              }
+          />
           <h1>Server-side rendered page</h1>
           <p>This page is server-side rendered. It was rendered on {formattedDate}.</p>
           <p><Link href="/">View a static page.</Link></p>
